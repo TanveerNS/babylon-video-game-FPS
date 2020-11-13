@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./js/libs/babylon_4_1.js"></script>
+    <!-- <script src="./js/field_world.js"></script> -->
+    <script src="./js/game_client_world.js"></script>
+
+    <style>
+		html, body {
+		overflow: hidden;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		}
+		#renderCanvas {
+		width: 100%;
+		height: 100%;
+		}
+	</style>
+
+</head>
+<body>
+
+<canvas id="renderCanvas"></canvas>
+<script>
+
+    var socket = io();
+	
+    <!-- socket.on('updatePosition', function(data){ -->
+        <!-- updatePlayerPosition(data); -->
+    <!-- }); -->
+    socket.on('connect', function(){
+        loadWorld();
+        <!-- socket.emit('requestOldPlayers', {}); -->
+    });
+    socket.on('createPlayer', function(data){
+        createPlayer(data);
+    });
+    <!-- socket.on('addOtherPlayer', function(data){ -->
+        <!-- addOtherPlayer(data); -->
+    <!-- }); -->
+    <!-- socket.on('removeOtherPlayer', function(data){ -->
+        <!-- removeOtherPlayer(data); -->
+    <!-- }); -->
+
+</script>
+	  
+</body>
+</html>
